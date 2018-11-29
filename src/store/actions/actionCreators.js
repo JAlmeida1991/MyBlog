@@ -10,7 +10,8 @@ export const removePost = post => ({
   post
 });
 
-export const editPost = post => ({
+export const editPost = (post, updates) => ({
   type: EDIT_POST,
-  post
+  post,
+  updates
 });

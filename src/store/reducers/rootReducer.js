@@ -16,7 +16,7 @@ const rootReducer = (state = initState, action) => {
             ...action.updates
           };
         } else {
-          return state;
+          return post;
         }
       });
     default:

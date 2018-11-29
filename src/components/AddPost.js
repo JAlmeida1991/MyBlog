@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { addPost } from "../store/actions/actionCreators";
+import guid from "../utils/guid";
 
 class AddPost extends Component {
   state = {
@@ -23,7 +24,9 @@ class AddPost extends Component {
 
   submitHandler = e => {
     e.preventDefault();
-    this.props.addPost(this.state);
+    const newPost = { ...this.state, id: guid() };
+    this.props.addPost(newPost);
+    this.props.history.replace("/");
   };
 
   render() {
