@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import BlogForm from "./BlogForm";
 import { removePost, editPost } from "../store/actions/actionCreators";
 
 class AddPost extends Component {
@@ -19,11 +20,11 @@ class AddPost extends Component {
     }
   }
 
-  changeTitleHandler = e => {
+  titleInputHandler = e => {
     this.setState({ title: e.target.value });
   };
 
-  changeBodyHandler = e => {
+  bodyInputHandler = e => {
     this.setState({ body: e.target.value });
   };
 
@@ -50,20 +51,16 @@ class AddPost extends Component {
 
     if (validPost) {
       post = (
-        <div>
-          <form onSubmit={e => e.preventDefault()}>
-            <input
-              onChange={this.changeTitleHandler}
-              value={this.state.title}
-            />
-            <textarea
-              onChange={this.changeBodyHandler}
-              value={this.state.body}
-            />
-            <button onClick={this.editPostHandler}>Save Post</button>
-            <button onClick={this.postRemoveHandler}>Remove Post</button>
-          </form>
-        </div>
+        <BlogForm
+          title={this.state.title}
+          body={this.state.body}
+          titleInputHandler={this.titleInputHandler}
+          bodyInputHandler={this.bodyInputHandler}
+          edit
+          editPostHandler={this.editPostHandler}
+          remove
+          postRemoveHandler={this.postRemoveHandler}
+        />
       );
     } else {
       post = <div>Not a valid post...</div>;

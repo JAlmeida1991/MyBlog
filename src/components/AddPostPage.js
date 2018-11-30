@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { addPost } from "../store/actions/actionCreators";
+import BlogForm from "./BlogForm";
+
 import guid from "../utils/guid";
 
 class AddPost extends Component {
@@ -9,10 +11,6 @@ class AddPost extends Component {
     title: "",
     body: ""
   };
-
-  componentDidUpdate() {
-    console.log(this.props);
-  }
 
   titleInputHandler = e => {
     this.setState({ title: e.target.value });
@@ -31,22 +29,14 @@ class AddPost extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.submitHandler}>
-          <input
-            name="title"
-            type="input"
-            value={this.state.title}
-            onChange={this.titleInputHandler}
-          />
-          <textarea
-            name="body"
-            value={this.state.body}
-            onChange={this.bodyInputHandler}
-          />
-          <button type="submit">Save Post</button>
-        </form>
-      </div>
+      <BlogForm
+        title={this.state.title}
+        body={this.state.body}
+        titleInputHandler={this.titleInputHandler}
+        bodyInputHandler={this.bodyInputHandler}
+        submit
+        submitHandler={this.submitHandler}
+      />
     );
   }
 }
