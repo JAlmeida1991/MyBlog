@@ -22,9 +22,12 @@ class AddPost extends Component {
 
   submitHandler = e => {
     e.preventDefault();
-    const newPost = { ...this.state, id: guid() };
-    this.props.addPost(newPost);
-    this.props.history.replace("/");
+    const { title, body } = this.state;
+    if (title && body) {
+      const newPost = { title, body, id: guid() };
+      this.props.addPost(newPost);
+      this.props.history.replace("/");
+    }
   };
 
   render() {

@@ -11,7 +11,9 @@ const BlogForm = props => (
     }}
     onSubmit={e => e.preventDefault()}
   >
-    <label htmlFor="title">Title</label>
+    <label style={{ fontWeight: "600", fontSize: "20px" }} htmlFor="title">
+      Title
+    </label>
     <input
       id="title"
       name="title"
@@ -19,14 +21,20 @@ const BlogForm = props => (
       value={props.title}
       onChange={props.titleInputHandler}
       style={{
-        padding: "5px"
+        padding: "5px",
+        margin: "5px 0 5px 0",
+        fontSize: "16px"
       }}
     />
-    <label htmlFor="body">Body</label>
+    <label style={{ fontWeight: "600", fontSize: "20px" }} htmlFor="body">
+      Body
+    </label>
     <textarea
       style={{
         height: "300px",
-        padding: "5px"
+        padding: "5px",
+        margin: "5px 0 5px 0",
+        fontSize: "16px"
       }}
       id="body"
       name="body"
@@ -35,7 +43,7 @@ const BlogForm = props => (
     />
     {props.submit && (
       <button type="submit" onClick={props.submitHandler}>
-        Add Post
+        Save Post
       </button>
     )}
     {props.edit && (
