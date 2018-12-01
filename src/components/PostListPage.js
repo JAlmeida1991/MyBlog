@@ -2,13 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import PostTitleListItem from "./PostTitleListItem";
+import PostListItem from "./PostListItem";
 
 class PostList extends Component {
-  state = { search: "" };
+  state = { search: "", sortBy: "By Title" };
 
   searchInputHandler = e => {
     this.setState({ search: e.target.value });
+  };
+
+  changeSelect = e => {
+    const sortBy = this.state.sortBy === "By Body" ? "By Title" : "By Body";
+    this.setState({ sortBy });
   };
 
   render() {
@@ -17,26 +22,30 @@ class PostList extends Component {
         <div
           style={{
             display: "flex",
-            justifyContent: "space-around"
+            justifyContent: "space-between"
           }}
         >
           <div
             style={{
               display: "flex",
               justifyContent: "space-around",
-              width: "50%"
+              width: "40%"
             }}
           >
             <input
-              style={{ padding: "5px", width: "30%", flex: "1" }}
+              style={{ padding: "5px", width: "80%" }}
               value={this.state.search}
               onChange={this.searchInputHandler}
               type="text"
               placeholder="Search Posts"
             />
-            <select style={{ height: "100%" }}>
-              <option>By Title</option>
-              <option>By Body</option>
+            <select
+              onChange={this.changeSelect}
+              value={this.state.sortBy}
+              style={{ height: "100%" }}
+            >
+              <option value="By Title">By Title</option>
+              <option value="By Body">By Body</option>
             </select>
           </div>
           <Link
@@ -53,15 +62,15 @@ class PostList extends Component {
           </Link>
         </div>
 
-        <ul style={{ listStyle: "none" }}>
+        <ul style={{ listStyle: "none", padding: "0" }}>
           {this.props.state
             .filter(post =>
               post.title.toLowerCase().includes(this.state.search.toLowerCase())
             )
             .map(post => (
-              <PostTitleListItem
+              <PostListItem
                 id={post.id}
-                title={post.title}
+                item={this.state.sortBy === "By Title" ? post.title : post.body}
                 key={post.id}
               />
             ))}
@@ -71,8 +80,6 @@ class PostList extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  state
-});
+const mapStateToProps = state => ({ state });
 
 export default connect(mapStateToProps)(PostList);
