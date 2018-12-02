@@ -30,6 +30,13 @@ class AddPost extends Component {
     }
   };
 
+  cancelHandler = e => {
+    const {
+      history: { goBack }
+    } = this.props;
+    goBack();
+  };
+
   render() {
     return (
       <BlogForm
@@ -39,6 +46,8 @@ class AddPost extends Component {
         bodyInputHandler={this.bodyInputHandler}
         submit
         submitHandler={this.submitHandler}
+        cancel
+        cancelHandler={this.cancelHandler}
       />
     );
   }

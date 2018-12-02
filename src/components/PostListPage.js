@@ -28,8 +28,8 @@ class PostList extends Component {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-around",
-              width: "40%"
+              justifyContent: "space-between",
+              width: "35rem"
             }}
           >
             <input
@@ -64,9 +64,13 @@ class PostList extends Component {
 
         <ul style={{ listStyle: "none", padding: "0" }}>
           {this.props.state
-            .filter(post =>
-              post.title.toLowerCase().includes(this.state.search.toLowerCase())
-            )
+            .filter(post => {
+              const type = this.state.sortBy === "By Title" ? "title" : "body";
+
+              return post[type]
+                .toLowerCase()
+                .includes(this.state.search.toLowerCase());
+            })
             .map(post => (
               <PostListItem
                 id={post.id}

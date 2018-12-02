@@ -42,17 +42,23 @@ const BlogForm = props => (
       onChange={props.bodyInputHandler}
     />
     {props.submit && (
-      <button type="submit" onClick={props.submitHandler}>
+      <button type="button" onClick={props.submitHandler}>
         Save Post
       </button>
     )}
+    {props.cancel && (
+      <button type="button" onClick={props.cancelHandler}>
+        Cancel
+      </button>
+    )}
+
     {props.edit && (
-      <button type="submit" onClick={props.editPostHandler}>
+      <button type="button" onClick={props.editPostHandler}>
         Save Post
       </button>
     )}
     {props.remove && (
-      <button type="submit" onClick={props.postRemoveHandler}>
+      <button type="button" onClick={props.postRemoveHandler}>
         Remove Post
       </button>
     )}
