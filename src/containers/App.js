@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 
-import Header from "../components/Header";
-import PostListPage from "../components/PostListPage";
-import AddPostPage from "../components/AddPostPage";
-import EditPostPage from "../components/EditPostPage";
-import Footer from "../components/Footer";
+import Header from "../components/Header/Header";
+import PostListPage from "../components/PostListPage/PostListPage";
+import AddPostPage from "../components/AddPostPage/AddPostPage";
+import EditPostPage from "../components/EditPostPage/EditPostPage";
+import Footer from "../components/Footer/Footer";
 
 class App extends Component {
   render() {

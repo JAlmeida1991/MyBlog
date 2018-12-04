@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import BlogForm from "./BlogForm";
-import { removePost, editPost } from "../store/actions/actionCreators";
+import BlogForm from "../BlogForm/BlogForm";
+import { removePost, editPost } from "../../store/actions/actionCreators";
 
 class AddPost extends Component {
   state = {

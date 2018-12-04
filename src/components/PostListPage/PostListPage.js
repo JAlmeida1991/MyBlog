@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import PostListItem from "./PostListItem";
+import PostListItem from "./PostListItem/PostListItem";
 
 class PostList extends Component {
   state = { search: "", sortBy: "By Title" };
@@ -50,11 +50,12 @@ class PostList extends Component {
           </div>
           <Link
             style={{
-              padding: "5px",
+              padding: "8px",
               backgroundColor: "green",
               color: "white",
               display: "inline-block",
-              textDecoration: "none"
+              textDecoration: "none",
+              fontWeight: "bold"
             }}
             to="/create"
           >
@@ -62,7 +63,7 @@ class PostList extends Component {
           </Link>
         </div>
 
-        <ul style={{ listStyle: "none", padding: "0" }}>
+        <ul style={{ listStyle: "none", padding: "0", marginTop: "5px" }}>
           {this.props.state
             .filter(post => {
               const type = this.state.sortBy === "By Title" ? "title" : "body";

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { addPost } from "../store/actions/actionCreators";
-import BlogForm from "./BlogForm";
+import { addPost } from "../../store/actions/actionCreators";
+import BlogForm from "../BlogForm/BlogForm";
 
-import guid from "../utils/guid";
+import guid from "../../utils/guid";
 
 class AddPost extends Component {
   state = {

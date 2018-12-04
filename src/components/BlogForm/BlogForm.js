@@ -25,6 +25,7 @@ const BlogForm = props => (
         margin: "5px 0 5px 0",
         fontSize: "16px"
       }}
+      placeholder="Post Title"
     />
     <label style={{ fontWeight: "600", fontSize: "20px" }} htmlFor="body">
       Body
@@ -40,6 +41,7 @@ const BlogForm = props => (
       name="body"
       value={props.body}
       onChange={props.bodyInputHandler}
+      placeholder="Post Body"
     />
     {props.submit && (
       <button type="button" onClick={props.submitHandler}>
