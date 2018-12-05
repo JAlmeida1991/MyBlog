@@ -41,6 +41,47 @@ body,
   flex: 1 0 auto;
 }
 
+.post-search {
+  padding: 5px;
+  width: 80%;
+  font-size: 1.5rem;
+}
+
+.post-select {
+  width: 50%;
+  height: 100%;
+  font-size: 1.5rem;
+}
+
+.post-add {
+  padding: 8px;
+  background-color: green;
+  color: white;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
+}
+
+.post-list__item {
+  font-size: 1.5rem;
+  padding: 10px;
+  border: 1px solid black;
+  margin-bottom: 5px;
+  word-break: break-all;
+}
+
+.post-list__item--link {
+  text-decoration: none;
+  color: black;
+}
+
 /* FOOTER */
 
 .footer {

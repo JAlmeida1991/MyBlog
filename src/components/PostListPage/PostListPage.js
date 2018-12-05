@@ -33,37 +33,27 @@ class PostList extends Component {
             }}
           >
             <input
-              style={{ padding: "5px", width: "80%" }}
               value={this.state.search}
               onChange={this.searchInputHandler}
               type="text"
               placeholder="Search Posts"
+              className="post-search"
             />
             <select
               onChange={this.changeSelect}
               value={this.state.sortBy}
-              style={{ height: "100%" }}
+              className="post-select"
             >
               <option value="By Title">By Title</option>
               <option value="By Body">By Body</option>
             </select>
           </div>
-          <Link
-            style={{
-              padding: "8px",
-              backgroundColor: "green",
-              color: "white",
-              display: "inline-block",
-              textDecoration: "none",
-              fontWeight: "bold"
-            }}
-            to="/create"
-          >
+          <Link className="post-add" to="/create">
             Add a Post
           </Link>
         </div>
 
-        <ul style={{ listStyle: "none", padding: "0", marginTop: "5px" }}>
+        <ul className="post-list">
           {this.props.state
             .filter(post => {
               const type = this.state.sortBy === "By Title" ? "title" : "body";
