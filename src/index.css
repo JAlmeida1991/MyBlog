@@ -55,11 +55,10 @@ body,
 
 .post-add {
   padding: 8px;
-  background-color: green;
+  background-color: #32cd32;
   color: white;
   display: inline-block;
   text-decoration: none;
-  font-weight: bold;
   font-size: 1.2rem;
 }
 
@@ -80,6 +79,22 @@ body,
 .post-list__item--link {
   text-decoration: none;
   color: black;
+}
+
+button {
+  padding: 8px;
+  cursor: pointer;
+  color: white;
+}
+
+.submit-button,
+.save-button {
+  background-color: #32cd32;
+}
+
+.cancel-button,
+.remove-button {
+  background-color: #f00;
 }
 
 /* FOOTER */

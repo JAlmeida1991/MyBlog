@@ -43,27 +43,50 @@ const BlogForm = props => (
       onChange={props.bodyInputHandler}
       placeholder="Post Body"
     />
-    {props.submit && (
-      <button type="button" onClick={props.submitHandler}>
-        Save Post
-      </button>
-    )}
-    {props.cancel && (
-      <button type="button" onClick={props.cancelHandler}>
-        Cancel
-      </button>
-    )}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between"
+      }}
+    >
+      {props.submit && (
+        <button
+          className="submit-button"
+          type="button"
+          onClick={props.submitHandler}
+        >
+          Save Post
+        </button>
+      )}
+      {props.cancel && (
+        <button
+          className="cancel-button"
+          type="button"
+          onClick={props.cancelHandler}
+        >
+          Cancel
+        </button>
+      )}
 
-    {props.edit && (
-      <button type="button" onClick={props.editPostHandler}>
-        Save Post
-      </button>
-    )}
-    {props.remove && (
-      <button type="button" onClick={props.postRemoveHandler}>
-        Remove Post
-      </button>
-    )}
+      {props.edit && (
+        <button
+          className="save-button"
+          type="button"
+          onClick={props.editPostHandler}
+        >
+          Save Post
+        </button>
+      )}
+      {props.remove && (
+        <button
+          className="remove-button"
+          type="button"
+          onClick={props.postRemoveHandler}
+        >
+          Remove Post
+        </button>
+      )}
+    </div>
   </form>
 );
 

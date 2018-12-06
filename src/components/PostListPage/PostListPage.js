@@ -70,6 +70,18 @@ class PostList extends Component {
               />
             ))}
         </ul>
+        {!this.props.state.length && (
+          <div
+            style={{
+              height: "50vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <p style={{ fontSize: "1.5rem" }}>No posts as of yet!</p>
+          </div>
+        )}
       </div>
     );
   }
