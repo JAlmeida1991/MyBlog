@@ -20,23 +20,16 @@ const BlogForm = props => (
       type="input"
       value={props.title}
       onChange={props.titleInputHandler}
-      style={{
-        padding: "5px",
-        margin: "5px 0 5px 0",
-        fontSize: "16px"
-      }}
+      className="input is-large"
       placeholder="Post Title"
     />
     <label style={{ fontWeight: "600", fontSize: "20px" }} htmlFor="body">
       Body
     </label>
     <textarea
-      style={{
-        height: "300px",
-        padding: "5px",
-        margin: "5px 0 5px 0",
-        fontSize: "16px"
-      }}
+      className="textarea is-large"
+      rows="13"
+      style={{ marginBottom: "1.5rem" }}
       id="body"
       name="body"
       value={props.body}
@@ -51,16 +44,16 @@ const BlogForm = props => (
     >
       {props.submit && (
         <button
-          className="submit-button"
+          className="button is-success is-large"
           type="button"
           onClick={props.submitHandler}
         >
-          Save Post
+          Save
         </button>
       )}
       {props.cancel && (
         <button
-          className="cancel-button"
+          className="button is-danger is-large"
           type="button"
           onClick={props.cancelHandler}
         >
@@ -70,20 +63,20 @@ const BlogForm = props => (
 
       {props.edit && (
         <button
-          className="save-button"
+          className="button is-success is-large"
           type="button"
           onClick={props.editPostHandler}
         >
-          Save Post
+          Save
         </button>
       )}
       {props.remove && (
         <button
-          className="remove-button"
+          className="button is-danger is-large"
           type="button"
           onClick={props.postRemoveHandler}
         >
-          Remove Post
+          Remove
         </button>
       )}
     </div>

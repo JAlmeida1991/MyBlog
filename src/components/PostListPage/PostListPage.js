@@ -19,36 +19,23 @@ class PostList extends Component {
   render() {
     return (
       <div style={{ width: "80%", margin: "0 auto" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between"
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              width: "35rem"
-            }}
-          >
+        <div className="filter-group-container">
+          <div className="filter-group">
             <input
               value={this.state.search}
               onChange={this.searchInputHandler}
               type="text"
               placeholder="Search Posts"
-              className="post-search"
+              className="input is-large"
             />
-            <select
-              onChange={this.changeSelect}
-              value={this.state.sortBy}
-              className="post-select"
-            >
-              <option value="By Title">By Title</option>
-              <option value="By Body">By Body</option>
-            </select>
+            <div className="select is-large">
+              <select onChange={this.changeSelect} value={this.state.sortBy}>
+                <option value="By Title">By Title</option>
+                <option value="By Body">By Body</option>
+              </select>
+            </div>
           </div>
-          <Link className="post-add" to="/create">
+          <Link className="button is-success is-large" to="/create">
             Add a Post
           </Link>
         </div>
