@@ -2,31 +2,43 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { addPost } from "../../store/actions/actionCreators";
-import BlogForm from "../BlogForm/BlogForm";
-
 import guid from "../../utils/guid";
+
+import BlogForm from "../BlogForm/BlogForm";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 class AddPost extends Component {
   state = {
     title: "",
-    body: ""
+    body: "",
+    hasError: false
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.hasError !== this.state.hasError && this.state.hasError) {
+      window.setTimeout(() => {
+        this.setState({ hasError: false });
+      }, 2000);
+    }
+  }
+
   titleInputHandler = e => {
-    this.setState({ title: e.target.value });
+    this.setState({ title: e.target.value, hasError: false });
   };
 
   bodyInputHandler = e => {
-    this.setState({ body: e.target.value });
+    this.setState({ body: e.target.value, hasError: false });
   };
 
   submitHandler = e => {
     e.preventDefault();
     const { title, body } = this.state;
-    if (title && body) {
+    if (title.trim() && body.trim()) {
       const newPost = { title, body, id: guid() };
       this.props.addPost(newPost);
       this.props.history.replace("/");
+    } else {
+      this.setState({ hasError: true });
     }
   };
 
@@ -39,16 +51,27 @@ class AddPost extends Component {
 
   render() {
     return (
-      <BlogForm
-        title={this.state.title}
-        body={this.state.body}
-        titleInputHandler={this.titleInputHandler}
-        bodyInputHandler={this.bodyInputHandler}
-        submit
-        submitHandler={this.submitHandler}
-        cancel
-        cancelHandler={this.cancelHandler}
-      />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          width: "80%",
+          maxWidth: "600px",
+          margin: "0 auto"
+        }}
+      >
+        <BlogForm
+          title={this.state.title}
+          body={this.state.body}
+          titleInputHandler={this.titleInputHandler}
+          bodyInputHandler={this.bodyInputHandler}
+          submit
+          submitHandler={this.submitHandler}
+          cancel
+          cancelHandler={this.cancelHandler}
+        />
+        {this.state.hasError && <ErrorMessage />}
+      </div>
     );
   }
 }

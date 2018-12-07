@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import BlogForm from "../BlogForm/BlogForm";
 import { removePost, editPost } from "../../store/actions/actionCreators";
+
+import BlogForm from "../BlogForm/BlogForm";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 class AddPost extends Component {
   state = {
     title: "",
-    body: ""
+    body: "",
+    hasError: false
   };
 
   componentDidMount() {
@@ -20,20 +23,33 @@ class AddPost extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.hasError !== this.state.hasError && this.state.hasError) {
+      window.setTimeout(() => {
+        this.setState({ hasError: false });
+      }, 2000);
+    }
+  }
+
   titleInputHandler = e => {
-    this.setState({ title: e.target.value });
+    this.setState({ title: e.target.value, hasError: false });
   };
 
   bodyInputHandler = e => {
-    this.setState({ body: e.target.value });
+    this.setState({ body: e.target.value, hasError: false });
   };
 
   editPostHandler = () => {
-    const id = this.props.match.params.id;
-    const oldPost = this.props.state.find(post => post.id === id);
-    const currentPost = { ...this.state, id };
-    this.props.editPost(oldPost, currentPost);
-    this.props.history.push("/");
+    const { title, body } = this.state;
+    if (title && body) {
+      const id = this.props.match.params.id;
+      const oldPost = this.props.state.find(post => post.id === id);
+      const currentPost = { title, body, id };
+      this.props.editPost(oldPost, currentPost);
+      this.props.history.push("/");
+    } else {
+      this.setState({ hasError: true });
+    }
   };
 
   postRemoveHandler = () => {
@@ -66,7 +82,20 @@ class AddPost extends Component {
       post = <div>Not a valid post...</div>;
     }
 
-    return post;
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          width: "80%",
+          maxWidth: "600px",
+          margin: "0 auto"
+        }}
+      >
+        {post}
+        {this.state.hasError && <ErrorMessage />}
+      </div>
+    );
   }
 }
 

@@ -1,16 +1,7 @@
 import React from "react";
 
 const BlogForm = props => (
-  <form
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      width: "80%",
-      maxWidth: "600px",
-      margin: "0 auto"
-    }}
-    onSubmit={e => e.preventDefault()}
-  >
+  <form onSubmit={e => e.preventDefault()}>
     <label style={{ fontWeight: "600", fontSize: "20px" }} htmlFor="title">
       Title
     </label>
@@ -39,7 +30,8 @@ const BlogForm = props => (
     <div
       style={{
         display: "flex",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        marginBottom: "1rem"
       }}
     >
       {props.submit && (
