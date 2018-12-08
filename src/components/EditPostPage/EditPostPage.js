@@ -10,7 +10,7 @@ class AddPost extends Component {
   state = {
     title: "",
     body: "",
-    hasError: false
+    hasError: ""
   };
 
   componentDidMount() {
@@ -26,29 +26,33 @@ class AddPost extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.hasError !== this.state.hasError && this.state.hasError) {
       window.setTimeout(() => {
-        this.setState({ hasError: false });
+        this.setState({ hasError: "" });
       }, 2000);
     }
   }
 
   titleInputHandler = e => {
-    this.setState({ title: e.target.value, hasError: false });
+    this.setState({ title: e.target.value, hasError: "" });
   };
 
   bodyInputHandler = e => {
-    this.setState({ body: e.target.value, hasError: false });
+    this.setState({ body: e.target.value, hasError: "" });
   };
 
   editPostHandler = () => {
     const { title, body } = this.state;
-    if (title && body) {
+    if (title.trim() && body.trim()) {
       const id = this.props.match.params.id;
       const oldPost = this.props.state.find(post => post.id === id);
       const currentPost = { title, body, id };
       this.props.editPost(oldPost, currentPost);
       this.props.history.push("/");
+    } else if (title && !body) {
+      this.setState({ hasError: "Please enter a Body!" });
+    } else if (!title && body) {
+      this.setState({ hasError: "Please enter a Title!" });
     } else {
-      this.setState({ hasError: true });
+      this.setState({ hasError: "Please enter both Title and Body!" });
     }
   };
 
@@ -93,7 +97,7 @@ class AddPost extends Component {
         }}
       >
         {post}
-        {this.state.hasError && <ErrorMessage />}
+        {this.state.hasError && <ErrorMessage message={this.state.hasError} />}
       </div>
     );
   }

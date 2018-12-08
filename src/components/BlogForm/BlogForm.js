@@ -20,7 +20,7 @@ const BlogForm = props => (
     <textarea
       className="textarea is-large"
       rows="13"
-      style={{ marginBottom: "1.5rem" }}
+      style={{ marginBottom: "1rem" }}
       id="body"
       name="body"
       value={props.body}
