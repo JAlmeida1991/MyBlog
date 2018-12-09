@@ -5,6 +5,7 @@ import Header from "../components/Header/Header";
 import PostListPage from "../components/PostListPage/PostListPage";
 import AddPostPage from "../components/AddPostPage/AddPostPage";
 import EditPostPage from "../components/EditPostPage/EditPostPage";
+import CurrentPostPage from "../components/CurrentPostPage/CurrentPostPage";
 import Footer from "../components/Footer/Footer";
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
           <Switch>
             <Route path="/create" component={AddPostPage} />
             <Route path="/edit/:id" component={EditPostPage} />
+            <Route path="/:id" component={CurrentPostPage} />
             <Route path="/" component={PostListPage} />
           </Switch>
         </div>

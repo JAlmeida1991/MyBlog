@@ -66,7 +66,7 @@ class PostList extends Component {
               alignItems: "center"
             }}
           >
-            <p style={{ fontSize: "1.5rem" }}>No posts as of yet!</p>
+            <p className="is-size-4">No posts as of yet!</p>
           </div>
         )}
       </div>

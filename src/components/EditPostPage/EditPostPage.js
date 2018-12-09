@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { removePost, editPost } from "../../store/actions/actionCreators";
 
@@ -71,19 +72,29 @@ class AddPost extends Component {
 
     if (validPost) {
       post = (
-        <BlogForm
-          title={this.state.title}
-          body={this.state.body}
-          titleInputHandler={this.titleInputHandler}
-          bodyInputHandler={this.bodyInputHandler}
-          edit
-          editPostHandler={this.editPostHandler}
-          remove
-          postRemoveHandler={this.postRemoveHandler}
-        />
+        <Fragment>
+          <BlogForm
+            title={this.state.title}
+            body={this.state.body}
+            titleInputHandler={this.titleInputHandler}
+            bodyInputHandler={this.bodyInputHandler}
+            edit
+            editPostHandler={this.editPostHandler}
+            remove
+            postRemoveHandler={this.postRemoveHandler}
+          />
+          <Link className="is-size-5" to={`/${this.props.match.params.id}`}>
+            Link to Post
+          </Link>
+          {this.state.hasError && (
+            <ErrorMessage message={this.state.hasError} />
+          )}
+        </Fragment>
       );
     } else {
-      post = <div>Not a valid post...</div>;
+      post = (
+        <div className="has-text-centered is-size-4">Not a valid post...</div>
+      );
     }
 
     return (
@@ -97,7 +108,6 @@ class AddPost extends Component {
         }}
       >
         {post}
-        {this.state.hasError && <ErrorMessage message={this.state.hasError} />}
       </div>
     );
   }
