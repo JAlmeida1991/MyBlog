@@ -22,14 +22,22 @@ class PostList extends Component {
         <div className="filter-group-container">
           <div className="filter-group">
             <input
-              value={this.state.search}
-              onChange={this.searchInputHandler}
+              name="post-search"
               type="text"
               placeholder="Search Posts"
               className="input is-large"
+              disabled={!this.props.state.length}
+              value={this.state.search}
+              onChange={this.searchInputHandler}
+              style={{ marginRight: ".8rem" }}
             />
             <div className="select is-large">
-              <select onChange={this.changeSelect} value={this.state.sortBy}>
+              <select
+                name="post-select"
+                disabled={!this.props.state.length}
+                onChange={this.changeSelect}
+                value={this.state.sortBy}
+              >
                 <option value="By Title">By Title</option>
                 <option value="By Body">By Body</option>
               </select>
