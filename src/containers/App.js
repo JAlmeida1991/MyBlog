@@ -17,7 +17,7 @@ class App extends Component {
           <Switch>
             <Route path="/create" component={AddPostPage} />
             <Route path="/edit/:id" component={EditPostPage} />
-            <Route path="/:id" component={CurrentPostPage} />
+            <Route path="/post/:id" component={CurrentPostPage} />
             <Route path="/" component={PostListPage} />
           </Switch>
         </div>

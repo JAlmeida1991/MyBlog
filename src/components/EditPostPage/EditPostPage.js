@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { removePost, editPost } from "../../store/actions/actionCreators";
 
 import BlogForm from "../BlogForm/BlogForm";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import ErrorMessage from "../BlogForm/ErrorMessage/ErrorMessage";
 
 class AddPost extends Component {
   state = {
@@ -83,7 +83,11 @@ class AddPost extends Component {
             remove
             postRemoveHandler={this.postRemoveHandler}
           />
-          <Link className="is-size-5" to={`/${this.props.match.params.id}`}>
+          <Link
+            style={{ marginBottom: "1rem" }}
+            className="is-size-5"
+            to={`/post/${this.props.match.params.id}`}
+          >
             Link to Post
           </Link>
           {this.state.hasError && (

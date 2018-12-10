@@ -2,7 +2,7 @@ import React from "react";
 
 const BlogForm = props => (
   <form onSubmit={e => e.preventDefault()}>
-    <label style={{ fontWeight: "600", fontSize: "20px" }} htmlFor="title">
+    <label className="is-size-3 has-text-weight-semibold" htmlFor="title">
       Title
     </label>
     <input
@@ -14,7 +14,7 @@ const BlogForm = props => (
       className="input is-large"
       placeholder="Post Title"
     />
-    <label style={{ fontWeight: "600", fontSize: "20px" }} htmlFor="body">
+    <label className="is-size-3 has-text-weight-semibold" htmlFor="body">
       Body
     </label>
     <textarea

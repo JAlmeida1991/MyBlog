@@ -10,9 +10,15 @@ const CurrentPostPage = props => {
     post = <p className="is-size-4 has-text-centered">Not a valid post...</p>;
   } else {
     post = (
-      <div>
-        <h1 className="title is-1 has-text-centered	">{currentPost.title}</h1>
-        <p className="is-size-4 has-text-centered	">{currentPost.body}</p>
+      <div
+        style={{
+          width: "80%",
+          margin: "0 auto",
+          maxWidth: "600px"
+        }}
+      >
+        <h1 className="title is-1 has-text-centered">{currentPost.title}</h1>
+        <p className="is-size-4">{currentPost.body}</p>
       </div>
     );
   }

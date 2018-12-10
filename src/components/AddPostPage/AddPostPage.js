@@ -5,7 +5,7 @@ import { addPost } from "../../store/actions/actionCreators";
 import guid from "../../utils/guid";
 
 import BlogForm from "../BlogForm/BlogForm";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import ErrorMessage from "../BlogForm/ErrorMessage/ErrorMessage";
 
 class AddPost extends Component {
   state = {
