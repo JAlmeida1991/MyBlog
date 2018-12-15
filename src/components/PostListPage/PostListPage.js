@@ -66,15 +66,8 @@ class PostList extends Component {
             ))}
         </ul>
         {!this.props.state.length && (
-          <div
-            style={{
-              height: "50vh",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          >
-            <p className="is-size-4">No posts as of yet!</p>
+          <div className="no-post-container">
+            <p className="is-size-4 is-italic">No posts as of yet!</p>
           </div>
         )}
       </div>

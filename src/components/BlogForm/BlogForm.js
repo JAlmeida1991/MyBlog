@@ -1,7 +1,7 @@
 import React from "react";
 
 const BlogForm = props => (
-  <form onSubmit={e => e.preventDefault()}>
+  <form>
     <label className="is-size-3 has-text-weight-semibold" htmlFor="title">
       Title
     </label>
@@ -27,13 +27,7 @@ const BlogForm = props => (
       onChange={props.bodyInputHandler}
       placeholder="Post Body"
     />
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        marginBottom: "1rem"
-      }}
-    >
+    <div className="form-button-container">
       {props.submit && (
         <button
           className="button is-success is-large"

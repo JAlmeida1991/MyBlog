@@ -101,19 +101,7 @@ class AddPost extends Component {
       );
     }
 
-    return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "80%",
-          maxWidth: "600px",
-          margin: "0 auto"
-        }}
-      >
-        {post}
-      </div>
-    );
+    return <div className="form-container">{post}</div>;
   }
 }
 

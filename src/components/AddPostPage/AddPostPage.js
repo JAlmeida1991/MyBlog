@@ -55,15 +55,7 @@ class AddPost extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "80%",
-          maxWidth: "600px",
-          margin: "0 auto"
-        }}
-      >
+      <div className="form-container">
         <BlogForm
           title={this.state.title}
           body={this.state.body}

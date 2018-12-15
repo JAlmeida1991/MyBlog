@@ -35,6 +35,12 @@ body,
   font-size: 2.5rem;
 }
 
+.header__title--link {
+  text-decoration: none;
+  /* Need important or use inline style otherwise will default o background if hovered */
+  color: white !important;
+}
+
 /* BODY */
 
 .body {
@@ -69,6 +75,27 @@ body,
   display: flex;
   justify-content: space-between;
   width: 35rem;
+}
+
+.no-post-container {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 @media only screen and (max-width: 40rem) {
