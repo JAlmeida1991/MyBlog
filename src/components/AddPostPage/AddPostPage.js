@@ -11,14 +11,18 @@ class AddPost extends Component {
   state = {
     title: "",
     body: "",
-    hasError: ""
+    hasError: "",
+    // Only needed to cancel subscription to window timeout function
+    windowTimeout: null
   };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.hasError !== this.state.hasError && this.state.hasError) {
-      window.setTimeout(() => {
+      const windowTimeout = window.setTimeout(() => {
         this.setState({ hasError: "" });
       }, 2000);
+      // Assign id to state
+      this.setState({ windowTimeout });
     }
   }
 
@@ -47,9 +51,13 @@ class AddPost extends Component {
   };
 
   cancelHandler = e => {
+    // Clear the timeout
+    window.clearTimeout(this.state.windowTimeout);
+
     const {
       history: { goBack }
     } = this.props;
+
     goBack();
   };
 
